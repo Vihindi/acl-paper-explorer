@@ -1,7 +1,7 @@
 name: Refresh anthology and deploy
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
   schedule:
     - cron: '17 0 * * *'
@@ -36,4 +36,5 @@ jobs:
           path: site
       - uses: actions/deploy-pages@v4
         id: deploy
+
 

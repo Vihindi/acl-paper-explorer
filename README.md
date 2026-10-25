@@ -1,21 +1,26 @@
 # ACL Paper Explorer
 
-A dependency-free GitHub Pages website. Filters all ACL Anthology paper metadata by comma-separated keywords (all/any), year, and venue checkboxes, including workshops. Exports every matched paper title and Anthology link, across all pages.
+Find and filter ACL Anthology papers relevant to your research.
 
-## Publish on GitHub
-1. Create a GitHub repository and upload this folder's contents, including `.github`.
-2. Use `main` as the default branch.
-3. In Settings → Pages → Build and deployment, select **GitHub Actions**.
-4. In Actions, run **Refresh anthology and deploy** (or push a commit).
-5. Open the URL shown by the deployment.
+**Visit the website:** [ACL Paper Explorer](https://vihindi.github.io/acl-paper-explorer/)
 
-The workflow downloads current metadata directly from acl-org/acl-anthology on every build and deploys daily at 00:17 UTC (05:47 Sri Lanka time). Updates depend on successful GitHub Actions runs; schedules can be delayed, and GitHub may disable schedules in inactive repositories. Run the workflow manually to refresh immediately. No API keys or paid services are required. PDFs stay on the official Anthology site.
+ACL Paper Explorer brings papers from conferences and workshops into one searchable interface, helping you narrow down the literature and save a list of relevant papers.
 
-## Local preview
-Clone https://github.com/acl-org/acl-anthology into a separate `anthology` folder, then run:
+## What you can do
 
-    python scripts/build.py anthology
-    python -m http.server 8000 --directory site
+- **Search multiple keywords or phrases:** separate them with commas and choose whether papers must match all keywords or any keyword. Search covers paper titles, abstracts, and author names.
+- **Filter by year:** focus on a particular publication year or explore all years.
+- **Select venues and workshops:** use checkboxes to include the venues you need. Search the venue list to find them quickly. Leaving all venues unchecked includes every venue.
+- **Browse matching papers:** see titles, authors, publication details, and available abstracts, with links to the official ACL Anthology pages. Results appear newest first.
+- **Download your results:** export all papers matching your filters to a text file containing paper titles and links, including results beyond the current page.
 
-Visit http://localhost:8000. The generated index is not committed; production always rebuilds from upstream. Search covers titles, abstracts, and author names. Venue IDs come from volume metadata, with collection fallback for unclassified volumes. Front matter is excluded.
+## Daily updates
+
+The paper index is rebuilt daily from the [ACL Anthology repository](https://github.com/acl-org/acl-anthology), so newly added papers become searchable after the next successful update. The website displays when its data was last updated.
+
+Updates are scheduled for 05:47 AM Sri Lanka time (00:17 UTC). Scheduled runs can be delayed or disabled by GitHub, so the displayed update time is the best way to check data freshness.
+
+## About the data
+
+The website indexes paper metadata and links to the official ACL Anthology. It does not host PDF copies. Keyword matching searches the available metadata, rather than the full text of papers. Venue labels follow the identifiers provided by the Anthology metadata.
 
